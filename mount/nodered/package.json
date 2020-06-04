@@ -1,0 +1,16 @@
+{
+    "name": "node-red-project",
+    "description": "A Node-RED Project",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "node-red-node-email": "~1.7.8",
+        "node-red-node-mysql": "~0.1.0"
+    },
+    "node-red": {
+        "settings": {
+            "flowFile": "root_flows.json",
+            "credentialsFile": "root_flows_cred.json"
+        }
+    }
+}
