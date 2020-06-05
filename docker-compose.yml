@@ -60,4 +60,3 @@ services:
       - ${METABASE_PORT}:3000
     volumes:
       - ./mount/metabase:/metabase
-
