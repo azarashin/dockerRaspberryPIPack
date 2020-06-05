@@ -13,29 +13,29 @@
 
 ## 2. ディレクトリ構造
 
-|-- mount
-|   |-- db (mysql 関連のマウント先)
-|   |    |-- data (db 本体が格納される)
-|   |    |   |-- .gitignore (data ディレクトリをリポジトリに残すためだけに設置。)
-|   |    |-- my.cnf (文字コードなどを設定する)
-|   |    |-- sql (データベースの初期化関連)
-|   |         |-- 001-create-tables.sql (初期化時に実行するクエリを格納)
-|   |         |-- init-database.sh　(初期化処理のためのスクリプト)
-|   |-- nodered
-|   |    |-- settings.js 
-|   |    |-- package.json
-|   |    |-- node_modules (mysql やemail など最低限のノードを格納) 
-|   |    |-- (フローファイル、暗号化済み認証情報)
-|   |-- nginx
-|   |    |-- public
-|   |         |-- index.html
-|   |-- superset
-|-- docker-compose.yml
-|-- .env
-|-- Readme.md
-|-- dockerfile
-     |-- superset
-          |-- Dockerfile, etc...
+|-- mount  
+|   |-- db (mysql 関連のマウント先)  
+|   |    |-- data (db 本体が格納される)  
+|   |    |   |-- .gitignore (data ディレクトリをリポジトリに残すためだけに設置。)  
+|   |    |-- my.cnf (文字コードなどを設定する)  
+|   |    |-- sql (データベースの初期化関連)  
+|   |         |-- 001-create-tables.sql (初期化時に実行するクエリを格納)  
+|   |         |-- init-database.sh　(初期化処理のためのスクリプト)  
+|   |-- nodered  
+|   |    |-- settings.js   
+|   |    |-- package.json  
+|   |    |-- node_modules (mysql やemail など最低限のノードを格納)   
+|   |    |-- (フローファイル、暗号化済み認証情報)  
+|   |-- nginx  
+|   |    |-- public  
+|   |         |-- index.html  
+|   |-- superset  
+|-- docker-compose.yml  
+|-- .env  
+|-- Readme.md  
+|-- dockerfile  
+     |-- superset  
+          |-- Dockerfile, etc...  
 
 ## 3. 構築手順
 
