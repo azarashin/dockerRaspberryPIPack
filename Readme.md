@@ -54,9 +54,6 @@
 | mysql      | MYSQL_ROOT_PASSWORD | root ユーザの初期パスワード                             |
 | mysql      | MYSQL_USER          | 通常アクセスするときのためのユーザ名                    |
 | mysql      | MYSQL_PASSWORD      | 上記ユーザ名に対する初期パスワード                      |
-| phpMyAdmin | PMA_PORT            | コンテナ外からアクセスするときのphpMyAdmin のポート番号 |
-| phpMyAdmin | PMA_USER            | mysql にアクセスするためのユーザ名。MYSQL_USER の設定値と同じにしておく |
-| phpMyAdmin | PMA_PASSWORD        | 上記ユーザ名に対する初期パスワード。MYSQL_PASSWORD の設定値と同じにしておく。 |
 | nginx      | NGINX_PORT          | コンテナ外からアクセスするときのnginx のポート番号      |
 
 ### 3.2. コンテナ群の生成及び起動
@@ -65,13 +62,23 @@
 sudo docker compose up -d
 ```
 
-### 3.3. superset のアカウント初期化
+### 3.3. metabase のアカウント初期化
 
-```
-sudo docker exec -it ${CONTAINER_BASE_NAME}_superset superset-init
-```
+![metabase初期化画面](.\images\metabase000.png)
 
-ユーザ名やパスワードその他もろもろ聞かれるので設定する。
+最初にアクセスすると、上記画面のように2 Add your data の画面で色々聞かれるので、以下の内容をそれぞれ入力する。
+
+| 項目              | 概要                               |
+| ----------------- | ---------------------------------- |
+| (データベース)    | MySQL を選択する                   |
+| Name              | 好きな名前を入力する               |
+| Host              | db で固定                          |
+| Port              | 3306 で固定                        |
+| Database name     | 環境変数 MYSQL_DATABASE に合わせる |
+| Database username | 環境変数MYSQL_USER に合わせる      |
+| Database password | 環境変数MYSQL_PASSWORD に合わせる  |
+
+
 
 ## 4. 注意事項
 
@@ -81,17 +88,7 @@ sudo docker exec -it ${CONTAINER_BASE_NAME}_superset superset-init
 
 ホスト名はlocalhost や127.0.0.1 ではダメ。db というのは、docker-compose.yml に記載したmysql のサービス名であり、docker コンテナをまたいでネットワークアクセスする時にホスト名として使用する。
 
-### 4.2. superset でdata source を追加するときのSQLAlchemy URI の書き方
 
-```
- mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/(database名)
-```
-
-
-
-と記述する。${MYSQL_USER} と${MYSQL_PASSWORD} は.env で設定したものに置き換える。
-
-db はmysql のホスト名であり、4.1. と同じ理由によりlocalhost や127.0.0.1 ではなくdb を指定する。
 
 
 ## 5. 参考情報
